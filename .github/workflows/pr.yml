@@ -1,0 +1,12 @@
+name: pr-checks
+on:
+    pull_request:
+        branches: [ main ]
+
+jobs:
+  dotnet-test:
+    runs-on: ubuntu-latest
+    steps:
+        - name: generate_tag
+          run: |
+            echo Dummy step
