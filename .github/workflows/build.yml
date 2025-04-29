@@ -12,3 +12,12 @@ jobs:
               uses: actions/setup-python@v5
               with:
                 python-version: '3.x'
+            - name: generate_tag
+              run: |
+                NEW_TAG=$(python ./.ci/bump.py 2>&1)
+                echo "Generated new tag: $NEW_TAG"
+                #echo "NEW_TAG=$NEW_TAG" >> $GITHUB_ENV
+                git config user.name "GitHub Actions"
+                git config user.email "github-actions@users.noreply.github.com"
+                git tag $NEW_TAG
+                git push origin main
