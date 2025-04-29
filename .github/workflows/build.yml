@@ -35,5 +35,5 @@ jobs:
                 git push --set-upstream origin $NEW_TAG
                 #git push origin tag $NEW_TAG
                 
-                gh pr create --title "TAG $NEW_TAG" --body "[skip-ci]" --head $(git branch --show-current)
+                gh pr create --title "TAG $NEW_TAG" --body "[skip-ci]" --head $(git branch --show-current) --base main
                 #gh pr merge --auto --delete-branch "$NEW_TAG"
