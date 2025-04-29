@@ -18,7 +18,7 @@ jobs:
                 
                 git config user.name "GitHub Actions"
                 git config user.email "github-actions@users.noreply.github.com"
-
+                NEW_TAG=$(python ./.ci/getversion.py false 2>&1)
                 git branch $NEW_TAG
                 git switch $NEW_TAG
 
