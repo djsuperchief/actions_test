@@ -51,7 +51,7 @@ def main():
             bump_revision()
 
     ci_file["version"]["bump"] = "rev"
-
+    
     save_ci()
     print(f'{ci_file["version"]["major"]}.{ci_file["version"]["minor"]}.{ci_file["version"]["revision"]}')
 
