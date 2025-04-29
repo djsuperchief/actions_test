@@ -15,14 +15,13 @@ jobs:
               with:
                 python-version: '3.x'
             - uses: actions/checkout@v3
+              with:
+                token: ${{ env.GH_TOKEN }}
             - name: generate_tag
               run: |
                 
                 git config user.name "GitHub Actions"
                 git config user.email "github-actions@users.noreply.github.com"
-                NEW_TAG=$(python ./.ci/getversion.py false 2>&1)
-                git branch $NEW_TAG
-                git switch $NEW_TAG
 
                 NEW_TAG=$(python ./.ci/bump.py 2>&1)
                 echo "Generated new tag: $NEW_TAG"
@@ -32,9 +31,8 @@ jobs:
                 git add .
 
                 git commit -m "$NEW_TAG [skip-ci]"
-                git push --set-upstream origin $NEW_TAG
                 git push
                 #git push origin tag $NEW_TAG
                 
-                gh pr create --title "TAG $NEW_TAG" --body "[skip-ci]" --head $(git branch --show-current) --base main
+                #gh pr create --title "TAG $NEW_TAG" --body "[skip-ci]" --head $(git branch --show-current) --base main
                 #gh pr merge --auto --delete-branch "$NEW_TAG"
