@@ -17,7 +17,8 @@ def bump_major(ci_file, version):
         version[0] = int(version[0]) + 1
         print(f'{version[0]}.0.0')
     else:
-        exit('ERROR: Major version must be more than the current repository semver.')
+        sys.stderr.write('ERROR: Major version must be more than the current repository semver.')
+        exit(1)
 
 def bump_minor(version):
     version[1] = int(version[1]) + 1
