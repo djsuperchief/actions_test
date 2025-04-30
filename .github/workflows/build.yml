@@ -5,7 +5,7 @@ on:
         branches: [ main ]
 env:
     SEMVER: ${{ vars.SEMVER }}
-    MAJOR_VERSIOn: ${{ vars.MAJOR_VERSION }}
+    MAJOR_VERSION: ${{ vars.MAJOR_VERSION }}
 
 jobs:
     main:

@@ -30,6 +30,9 @@ def bump_revision(version):
 
 def main():
     version = sys.stdin.read().rstrip().split('.')
+    if not version or not version[0] or len(version) < 3:
+        print('ERROR: Version unspecified.')
+        exit(1)
     ci_file = open_ci()
 
     match ci_file["version_config"]["bump"]:
