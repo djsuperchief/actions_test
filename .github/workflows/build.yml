@@ -37,7 +37,7 @@ jobs:
                 git add .
 
                 git commit -m "$NEW_TAG [skip-ci]"
-                git push
+                #git push
                 #git push origin tag $NEW_TAG
                 
                 #gh pr create --title "TAG $NEW_TAG" --body "[skip-ci]" --head $(git branch --show-current) --base main
