@@ -7,7 +7,7 @@ RELEASE_TYPE="false"
 #version=$((git tag --list "0.0.*"  --sort=-version:refname | head -n 1) |python ./.ci/getversion.py $RELEASE_TYPE 2>&1)
 
 
-VERSION=$(git tag --list "0.0.*"  --sort=-version:refname | head -n 1 | python ./.ci/bump_v2.py 2>&1)
+VERSION=$(git tag --list "1.*.*"  --sort=-version:refname | head -n 1 | python ./.ci/bump_v2.py 2>&1)
 
 
 echo $VERSION
