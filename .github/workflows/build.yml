@@ -20,7 +20,7 @@ jobs:
                 git fetch origin --tags
                 CURRENT=$(git tag --list "${SEMVER}*" --sort=-version:refname | head -n 1)
                 # I dont like the below but we are where we are
-                python ./.ci/bump_v2.py
+                echo $CURRENT | python ./.ci/bump_v2.py
                 NEW_TAG=$(echo $CURRENT | python ./.ci/bump_v2.py 2>&1)
                 echo "Generated new tag: $NEW_TAG"
                 
