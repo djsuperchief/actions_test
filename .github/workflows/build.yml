@@ -21,8 +21,8 @@ jobs:
                 
                 git config user.name "GitHub Actions"
                 git config user.email "github-actions@users.noreply.github.com"
-
-                NEW_TAG=$(git tag --list "${SEMVER}*" --sort=-version:refname | head -n 1 | python ./.ci/bump_v2.py 2>&1)
+                CURRENT=$(git tag --list "${SEMVER}*" --sort=-version:refname | head -n 1)
+                NEW_TAG=$(echo $CURRENT | python ./.ci/bump_v2.py 2>&1)
                 echo "Generated new tag: $NEW_TAG"
                 git tag $NEW_TAG
                 git push origin tag $NEW_TAG
