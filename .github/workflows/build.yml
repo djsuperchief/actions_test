@@ -5,6 +5,7 @@ on:
         branches: [ main ]
 env:
     SEMVER: ${{ vars.SEMVER }}
+    MAJOR_VERSION: ${{ vars.MAJOR_VERSION }}
 
 jobs:
     main:
@@ -18,7 +19,7 @@ jobs:
             - name: generate_tag
               run: |
                 git fetch origin --tags
-                CURRENT=$(git tag --list "${SEMVER}*" --sort=-version:refname | head -n 1)
+                CURRENT=$(git tag --list "${MAJOR_VERSION}.*.*" --sort=-version:refname | head -n 1)
                 # I dont like the below but we are where we are
                 echo $CURRENT | python ./.ci/bump_v2.py
                 NEW_TAG=$(echo $CURRENT | python ./.ci/bump_v2.py 2>&1)
